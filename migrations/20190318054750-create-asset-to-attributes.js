@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Asset_to_attributes', {
+    return queryInterface.createTable('asset_to_attributes', {
       asset_to_attributes_id: {
         allowNull: false,
         autoIncrement: true,
@@ -28,6 +28,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Asset_to_attributes');
+    return queryInterface.dropTable('asset_to_attributes');
   }
 };

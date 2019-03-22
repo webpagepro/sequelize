@@ -1,11 +1,20 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Categories = sequelize.define('Categories', {
-    category_id: DataTypes.INTEGER,
-    categroy_name: DataTypes.STRING
-  }, {});
-  Categories.associate = function(models) {
-    // associations can be defined here
-  };
-  return Categories;
+/* jshint indent: 1 */
+
+module.exports = function(sequelize, DataTypes) {
+	return sequelize.define('categories', {
+		category_id: {
+			type: DataTypes.INTEGER(11),
+			allowNull: false,
+			primaryKey: true,
+			autoIncrement: true
+		},
+		category_name: {
+			type: DataTypes.STRING(256),
+			allowNull: false
+		}
+	}, {
+		tableName: 'categories'
+  });
+  
+  return categories;
 };

@@ -3,7 +3,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Category_to_attributes', {
+    return queryInterface.createTable('category_to_attributes', {
       category_to_attributes_id: {
         allowNull: false,
         autoIncrement: true,
@@ -27,6 +27,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Category_to_attributes');
+    return queryInterface.dropTable('category_to_attributes');
   }
 };

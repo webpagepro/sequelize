@@ -1,11 +1,23 @@
-'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Category_to_attributes = sequelize.define('Category_to_attributes', {
-    attribute_id: DataTypes.INTEGER,
-    category_id: DataTypes.INTEGER
-  }, {});
-  Category_to_attributes.associate = function(models) {
-    // associations can be defined here
-  };
-  return Category_to_attributes;
+/* jshint indent: 1 */
+
+module.exports = function(sequelize, DataTypes) {
+	return sequelize.define('category_to_attributes', {
+		category_to_attributes_id: {
+			type: DataTypes.INTEGER(11),
+			allowNull: false,
+			primaryKey: true,
+			autoIncrement: true
+		},
+		attribute_id: {
+			type: DataTypes.INTEGER(11),
+			allowNull: true
+		},
+		category_id: {
+			type: DataTypes.INTEGER(11),
+			allowNull: true
+		}
+	}, {
+		tableName: 'category_to_attributes'
+	});
+	return category_to_attributes;
 };
