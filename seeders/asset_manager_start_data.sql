@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 21, 2019 at 10:01 PM
+-- Generation Time: Mar 22, 2019 at 09:15 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -49,7 +49,9 @@ INSERT INTO `assets` (`asset_id`, `category_id`, `createdAt`, `updatedAt`) VALUE
 (10006, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
 (10008, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
 (10009, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10010, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15');
+(10010, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
+(20010, 1, '2019-03-22 19:07:20', '2019-03-22 19:07:20'),
+(30000, 1, '2019-03-22 06:32:08', '2019-03-22 06:32:08');
 
 -- --------------------------------------------------------
 
@@ -500,8 +502,8 @@ INSERT INTO `attributes` (`attribute_id`, `attribute_name`, `createdAt`, `update
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(256) NOT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -511,7 +513,9 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`category_id`, `category_name`, `createdAt`, `updatedAt`) VALUES
 (1, 'Computers', '2019-03-18 12:43:36', '2019-03-18 12:43:36'),
 (2, 'Phones', '2019-03-18 12:43:36', '2019-03-18 12:43:36'),
-(3, 'HDD', '2019-03-18 12:43:36', '2019-03-18 12:43:36');
+(3, 'HDD', '2019-03-18 12:43:36', '2019-03-18 12:43:36'),
+(4, 'new test category', '2019-03-22 20:47:19', '2019-03-22 21:01:51'),
+(5, 'second new test category ', '2019-03-22 21:10:17', '2019-03-22 21:11:14');
 
 -- --------------------------------------------------------
 
@@ -523,7 +527,7 @@ CREATE TABLE `category_to_attributes` (
   `category_to_attributes_id` int(11) NOT NULL,
   `attribute_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -558,6 +562,28 @@ INSERT INTO `category_to_attributes` (`category_to_attributes_id`, `attribute_id
 (24, 3, 2, '2019-03-18 12:45:24', '2019-03-18 12:45:24'),
 (25, 4, 2, '2019-03-18 12:45:24', '2019-03-18 12:45:24'),
 (26, 5, 2, '2019-03-18 12:45:24', '2019-03-18 12:45:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `SequelizeMeta`
+--
+
+CREATE TABLE `SequelizeMeta` (
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `SequelizeMeta`
+--
+
+INSERT INTO `SequelizeMeta` (`name`) VALUES
+('20190318053256-create-assets.js'),
+('20190318053541-create-categories.js'),
+('20190318054053-create-attributes.js'),
+('20190318054655-create-asset-to-notes.js'),
+('20190318054750-create-asset-to-attributes.js'),
+('20190318054827-create-category-to-attributes.js');
 
 --
 -- Indexes for dumped tables
@@ -600,6 +626,13 @@ ALTER TABLE `category_to_attributes`
   ADD PRIMARY KEY (`category_to_attributes_id`);
 
 --
+-- Indexes for table `SequelizeMeta`
+--
+ALTER TABLE `SequelizeMeta`
+  ADD PRIMARY KEY (`name`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -625,7 +658,7 @@ ALTER TABLE `attributes`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `category_to_attributes`
