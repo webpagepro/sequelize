@@ -6,7 +6,7 @@ const random = require("lodash.random");
 const db = require("./models");
 const apiAssets = require("./app/api/assets");
 const apiCategories = require("./app/api/categories");
-const apiAtrributes = require("./app/api/attributes");
+const apiAttributes = require("./app/api/attributes");
 
 const app = express();
 app.use(bodyParser.json());
@@ -14,7 +14,7 @@ app.use(express.static("app/public"));
 
 apiAssets(app, db);
 apiCategories(app, db);
-
+apiAttributes(app, db);
 /*
 db.sequelize.sync().then(() => {
   // populate categories table with dummy data

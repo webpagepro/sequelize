@@ -10,8 +10,12 @@ module.exports = function(sequelize, DataTypes) {
 		category_id: {
 			type: DataTypes.INTEGER(11),
 			allowNull: false
-		}
-	}, {
+    }
+  }, 
+    
+  { 
+    onDelete: 'CASCADE',
 		tableName: 'assets'
   });
+  return assets;
 };

@@ -2,3 +2,6 @@ User submits id and app performs lookup
 -  If id does NOT exist, app should create a new asset with temporary default category_id = 99 chosen, the app displays blank form fields corresponding with the selected category.
 
 - If id already exists, then the app displays the existing records within the form fields corresponding with the selected category.
+
+
+899
