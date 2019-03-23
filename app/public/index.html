@@ -25,7 +25,7 @@
   <h2>assets and their categories</h2>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const renderassets = (body, assets) => {
+      const render(assets = (body, assets) => {
         const section = document.createElement('section');
         const domString = `
           <p>
@@ -37,25 +37,25 @@
         `;
         section.innerHTML = domString;
         body.appendChild(section);
-      };
-      const tagsassets = fetch("/assets")
+      });
+      const assets = fetch("/assets")
         .then((response) => response.json());
-      const promise.categoriess = promise.assets
+      const promiseCategoriess = promiseAssets
         .then((assets) => {
-          return promise..all(
+          return promise.all(
             assets.map(
-              (assets) => fetch(`/categories/${assets.category_id.category_name}`)
-              .then((r) => r.json())
+              (assets) => fetch(`/categories/${assets.category_id}`)
+              .then((res) => res.json())
             )
           );
       });
       const body = document.body;
-      promise..all([promise.assets, promise.categoriess])
+      promise.all([promise.assets, promise.categories])
         .then(([assets, categoriess]) => {
           categoriess.forEach((categories, index) => {
             if (assets[index]) {
-              const aggregatedassets = {...assets[index], categories};
-              renderassets(body, aggregatedassets);
+              const aggregatedAssets = {...assets[index], categories};
+              render(assets(body, aggregated.assets));
             }
           })
         })

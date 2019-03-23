@@ -1,11 +1,15 @@
 module.exports = (app, db) => {
 
-    app.get( "/attributes/:cid", (req, res) => {(
+    app.get( "/ata/:cid", (req, res) => {(
 
         //ATTRIBUTE NAMES *WORKS
-        db.attributes.findAll({
-            attributes: ['attribute_name']
-        }) 
+        db.category_to_attributes.findAll({
+           include: [{
+                model: categories,
+                where: { asset_id: req.params.cid }
+           }]
+            
+        })
        .then(results => res.json(results) )
     );
        })

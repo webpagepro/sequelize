@@ -1,11 +1,11 @@
 module.exports = (app, db) => {
 
-    app.get( "/attributes/:cid", (req, res) => {(
+    app.get( "/ata/:aid", (req, res) => {(
 
-        //ATTRIBUTE NAMES *WORKS
-        db.attributes.findAll({
-            attributes: ['attribute_name']
-        }) 
+        //ATTRIBUTE VALUES *WORKS
+        db.asset_to_attributes.findAll({
+           asset_id: req.params.aid['assset_value']   
+        })
        .then(results => res.json(results) )
     );
        })

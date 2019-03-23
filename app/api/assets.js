@@ -1,26 +1,35 @@
 //require('../../models/index')
 
 module.exports = (app, db) => {
-    /* app.get( "/assets", (req, res) =>
-       db.assets.findAll().then( (result) => res.json(result) )
+  //FIND ALL ASSETS *WORKS
+    app.get( "/assets", (req, res) =>
+       db.assets.findAll({
+        assets:[
+                'assets'
+       ]
+               
+        })
+       .then(result => {
+            res.json(result)
+       })
      );
-   */
-    // GET ALL ASSETS *WORKS
-    app.get("/assets", (req, res) => {
+  
+    // GET ALL ASSETS & ATTRIBUTES *WORKS
+    app.get("/assets/attributes", (req, res) => {
         db.assets.sequelize.query(`SELECT a.asset_id, a.category_id, attr.attribute_name, ata.attribute_value, ata.attribute_id 
     FROM assets a 
     JOIN asset_to_attributes ata 
-    ON ata.asset_id = a.asset_id 
+    ON ata.asset_id = a.asset_id
     JOIN attributes attr 
     ON ata.attribute_id = attr.attribute_id 
     WHERE ata.asset_id = a.asset_id
     ORDER BY a.asset_id ASC`)
-            .then((result => res.json(result))
-            );
+            .then(result => res.json(result))
+            console.log(Object)
     })
+  /* */
 
-
-    //GET ASSET & ATTTRIBUTES BY CATEGORY ID *WORKS
+    //GET SINGLE ASSET & ATTTRIBUTES BY CATEGORY ID *WORKS
     app.get("/assets/:category_id", (req, res) => {
         db.assets.sequelize.query(`SELECT a.asset_id, a.category_id, attr.attribute_name, ata.attribute_value, 
       ata.attribute_id 
