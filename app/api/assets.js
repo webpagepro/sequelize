@@ -77,9 +77,27 @@ app.get("/assets/:id", (req, res) => {
             }).then((result) => res.json(result))
     );
 
+ // UPDATE ASSET ATTRIBUTES - requires value (url) and ata id (body) *WORKS
+ app.put("/assets/edit/:id", (req, res) =>
+ db.asset_to_attributes.update({
+     attribute_value: req.body.attribute_value
+     },
+         {
+             where: {
+                 asset_id: req.params.id,
+                 attribute_id: req.body.attribute_id 
+             }
+         }).then((result) => res.json(result))
+         .catch(function(err) {
+             // print the error details
+             console.log(err, request.body.attribute_value);
+         })
+ );
 
 
-    // EDIT ASSET ATTRIBUTES - requires value (url) and ata id (body) *WORKS
+/*
+
+    // UPDATE ASSET ATTRIBUTES - requires value (url) and ata id (body) *WORKS
     app.put("/assets/edit/:id", (req, res) =>
     db.asset_to_attributes.update({
         attribute_value: req.body.attribute_value
@@ -96,7 +114,7 @@ app.get("/assets/:id", (req, res) => {
             })
     );
 
-
+*/
 
     // DELETE FROM ASSETS *WORKS
     app.delete("/assets/:id", (req, res) =>
