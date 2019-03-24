@@ -1,6 +1,6 @@
 module.exports = (app, db) => {
 
-    app.get( "/ata/:cid", (req, res) => {(
+    app.get( "/attributes/:cid", (req, res) => {(
 
         //ATTRIBUTE NAMES *WORKS
         db.category_to_attributes.findAll({

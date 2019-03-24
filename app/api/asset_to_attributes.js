@@ -1,19 +1,9 @@
 module.exports = (app, db) => {
 
-    app.get( "/ata/:aid", (req, res) => {(
-
-        //ATTRIBUTE VALUES *WORKS
-        db.asset_to_attributes.findAll({
-           asset_id: req.params.aid['assset_value']   
-        })
-       .then(results => res.json(results) )
-    );
-       })
-
-
-/*
-
-app.get( "/attributes/:cid", (req, res) => {(
+  
+   
+    //GET ALL ASSETS & ATTTRIBUTES BY CATEGORY ID *WORKS
+    app.get( "/ata/:cid", (req, res) => {(
         db.attributes.sequelize.query(`SELECT a.asset_id, a.category_id, attr.attribute_name, ata.attribute_value, ata.attribute_id 
         FROM assets a 
         JOIN asset_to_attributes ata 
@@ -24,6 +14,6 @@ app.get( "/attributes/:cid", (req, res) => {(
        .then(results => res.json(results) )
     );
        })
-       */
+         /*   */
 
-    }
+}

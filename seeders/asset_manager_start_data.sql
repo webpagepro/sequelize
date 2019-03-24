@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2019 at 09:15 PM
+-- Generation Time: Mar 24, 2019 at 06:23 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -41,12 +41,12 @@ CREATE TABLE `assets` (
 
 INSERT INTO `assets` (`asset_id`, `category_id`, `createdAt`, `updatedAt`) VALUES
 (10000, 3, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10001, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
+(10001, 3, '2019-03-18 11:58:15', '2019-03-24 04:36:31'),
 (10002, 3, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
 (10003, 3, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
 (10004, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
 (10005, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10006, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
+(10006, 3, '2019-03-18 11:58:15', '2019-03-24 04:22:50'),
 (10008, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
 (10009, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
 (10010, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
@@ -64,8 +64,8 @@ CREATE TABLE `asset_to_attributes` (
   `asset_id` int(11) NOT NULL,
   `attribute_id` int(11) NOT NULL,
   `attribute_value` text NOT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

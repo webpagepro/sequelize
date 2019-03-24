@@ -2,7 +2,9 @@ module.exports = (app, db) => {
 
     // GET ALL CATEGORIES  *WORKS
     app.get("/categories", (req, res) =>
-        db.categories.findAll().then((result) => res.json(result))
+        db.categories.findAll({
+            category_name
+        }).then((result) => res.json(result))
     );
 
     //GET SINGLE CATEGORY  *WORKS
