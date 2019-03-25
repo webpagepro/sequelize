@@ -1,5 +1,6 @@
 module.exports = (app, db) => {
 
+    //ATTRIBUTE NAMES BY CATEGORY ID
     app.get( "/attributes/:cid", (req, res) => {(
 
         //ATTRIBUTE NAMES *WORKS
@@ -11,10 +12,9 @@ module.exports = (app, db) => {
        })
 
 
-    
+  /*  
+      
 
-
-/*
 
 app.get( "/attributes/:cid", (req, res) => {(
         db.attributes.sequelize.query(`SELECT a.asset_id, a.category_id, attr.attribute_name, ata.attribute_value, ata.attribute_id 

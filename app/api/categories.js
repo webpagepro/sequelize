@@ -3,7 +3,8 @@ module.exports = (app, db) => {
     // GET ALL CATEGORIES  *WORKS
     app.get("/categories", (req, res) =>
         db.categories.findAll({
-            category_name
+            categories: ['categories']
+
         }).then((result) => res.json(result))
     );
 

@@ -12,7 +12,7 @@ const apiCategoryToAttributes = require("./app/api/category_to_attributes");
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static("app/public"));
+//app.use(express.static("app/public"));
 
 apiAssets(app, db);
 apiCategories(app, db);

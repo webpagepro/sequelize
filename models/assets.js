@@ -17,5 +17,11 @@ module.exports = function(sequelize, DataTypes) {
     onDelete: 'CASCADE',
 		tableName: 'assets'
   });
+
+  /*
+assets.associate = function(models) {
+    models.assets.hasMany(models.asset_to_attributes);
+  };
+  */
   return assets;
 };
