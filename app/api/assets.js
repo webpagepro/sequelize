@@ -12,16 +12,11 @@ module.exports = (app, db) => {
             })
     );
 
-  /*   **********************************/
+  /*  GET ASSET ATTRIBUTES  */
          app.get( "/assets/attributes", (req, res) => {
          db.asset_to_attributes.findAll({
             order : [['asset_id']]
-            
-
-          
-        })
-            
-                 
+        })     
          .then(result => {
               res.json(result)
          })  
