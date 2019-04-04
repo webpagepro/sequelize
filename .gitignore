@@ -1,2 +1,4 @@
 node_modules
 migrations/initial.sql
+db_backups
+migrations_refactored.zip

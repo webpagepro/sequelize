@@ -1,17 +1,26 @@
-//require('../../models/index')
-
 module.exports = (app, db) => {
-    //FIND ALL ASSETS *WORKS
-   app.get("/assets", (req, res) =>
-        db.assets.findAll({
-            assets: ['assets']
+ /*  GET ASSET ATTRIBUTES  */
+ app.get("/assets", (req, res) => {
+ 
+ db.assets.findAll({
 
-        })
-            .then(result => {
-                res.json(result)
-            })
-    );
+   order: [['asset_id']]
 
+ })
+     .then(result => {
+         res.json(result)
+     })
+    })
+/* 
+db.sequelize.query(`SELECT a.asset_id, a.qrcode, ata.attribute_value, attr.attribute_name, atn.notes FROM assets a JOIN asset_to_attributes ata ON a.asset_id = ata.asset_id JOIN attributes attr ON attr.attribute_id = ata.attribute_id JOIN asset_to_notes atn ON atn.asset_id = a.asset_id
+ORDER BY a.asset_id`, {type: db.sequelize.QueryTypes.SELECT})
+
+.then(result => {
+  res.json(result)
+})})
+  */ 
+ 
+ 
   /*  GET ASSET ATTRIBUTES  */
          app.get( "/assets/attributes", (req, res) => {
          db.asset_to_attributes.findAll({
@@ -25,7 +34,7 @@ module.exports = (app, db) => {
 
     // ASSET & ATTRIBUTES BY ID
     app.get("/assets/:id", (req, res) => {
-        (
+        
             db.asset_to_attributes.findAll({
 
 
@@ -34,7 +43,7 @@ module.exports = (app, db) => {
 
             })
                 .then(results => res.json(results))
-        );
+    
     })
 
     
@@ -52,7 +61,7 @@ module.exports = (app, db) => {
             ON atn.asset_id = ata.asset_id
            
             WHERE a.category_id =  ${req.params.category_id}
-            GROUP BY a.asset_id, ata.attribute_id, attr.attribute_name, ata.attribute_value, a.category_id, atn.notes`)
+            GROUP BY a.asset_id, ata.attribute_id, attr.attribute_name, ata.attribute_value, a.category_id, atn.notes`,{type: sequelize.QueryTypes.SELECT})
                 .then(result =>
                     res.json(result))
       // });
@@ -60,14 +69,14 @@ module.exports = (app, db) => {
    /* */
 
     //GET  ASSET ATTTRIBUTES BY CATEGORY ID *WORKS
-    app.get("/assets/category/:aid", (req, res) => {
+    app.get("/assets/category/:id", (req, res) => {
         db.asset_to_attributes.findAll({
             attribute_values: [
                 'attribute_values'
             ],
 
             where: {
-                asset_id: req.params.aid
+                asset_id: req.params.id
             }
         }).then((result) => res.json(result))
 

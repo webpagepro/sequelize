@@ -11,13 +11,21 @@ module.exports = {
       category_id: {
         type: Sequelize.INTEGER
       },
+
+      qrcode: {
+        type: Sequelize.STRING
+      },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        allowNull: true,
+        type: Sequelize.DATE,
+        timestamps: true,
+        defaultValue: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        allowNull: true,
+        type: Sequelize.DATE,
+        timestamps: true,
+        defaultValue: Sequelize.DATE
       }
     });
   },

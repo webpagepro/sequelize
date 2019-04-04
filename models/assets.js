@@ -1,27 +1,54 @@
-/* jshint indent: 1 */
 
-module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('assets', {
-		asset_id: {
-			type: DataTypes.INTEGER(11),
-			allowNull: false,
-			primaryKey: true
-		},
-		category_id: {
-			type: DataTypes.INTEGER(11),
-			allowNull: false
+
+module.exports = (sequelize, DataTypes) => {
+  const assets = sequelize.define('assets', {
+    asset_id: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      primaryKey: true
+    },
+    category_id: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false
+    },
+
+    qrcode: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: sequelize.literal('NOW()')
+    },
+
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: sequelize.literal('NOW()')
     }
-  }, 
-    
-  { 
-    onDelete: 'CASCADE',
-		tableName: 'assets'
-  });
+  },
 
-  /*
-assets.associate = function(models) {
-    models.assets.hasMany(models.asset_to_attributes);
-  };
-  */
-  return assets;
+    {
+      timestamps: true,
+      onDelete: 'CASCADE',
+      tableName: 'assets'
+    });
+ 
+
+
+   
+  assets.associate = function(models) {
+      models.assets.hasMany(models.attributes);
+    };
+    assets.associate = function(models) {
+      models.categories.hasMany(models.attributes);
+    };
+    assets.associate = function(models) {
+      models.assets.hasMany(models.asset_to_notes);
+    };
+   /*   */ 
+   
+   return assets;
 };

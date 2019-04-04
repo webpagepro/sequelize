@@ -8,11 +8,11 @@ SELECT notes
                SET notes = ? WHERE asset_id = ? */
 
 
-// ASSET & ATTRIBUTES BY ID
+//
 
 module.exports = (app, db) => {
 
-    app.get("/assets/notes/:id", (req, res) =>
+    app.get("/assets/notes/:id", (req, res) => 
 
         db.asset_to_notes.findAll({
 
@@ -26,7 +26,7 @@ module.exports = (app, db) => {
 }
 
 
-    // CREATE NEW NOTES *WORKS
+    /* CREATE NEW NOTES *WORKS
     app.post("/assets/notest/:id", (req, res) => {
         db.asset_to_notes.create({
             asset_id: req.params.id,
@@ -47,3 +47,4 @@ app.put("/assets/notest/:id", (req, res) =>
             }
         }).then((result) => res.json(result))
 );
+*/
