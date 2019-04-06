@@ -35,7 +35,8 @@ module.exports = (sequelize, DataTypes) => {
 	},
 	 {
 		timestamps: true,
-		tableName: 'asset_to_attributes'
+		tableName: 'asset_to_attributes',
+		freezeTableName: true
 	});
 
 	return asset_to_attributes;

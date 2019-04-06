@@ -17,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
 
+    notes: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true,
@@ -33,22 +38,23 @@ module.exports = (sequelize, DataTypes) => {
     {
       timestamps: true,
       onDelete: 'CASCADE',
-      tableName: 'assets'
+      tableName: 'assets',
+      freezeTableName: true
     });
- 
 
 
-   
+
+  /*  
   assets.associate = function(models) {
-      models.assets.hasMany(models.attributes);
-    };
-    assets.associate = function(models) {
-      models.categories.hasMany(models.attributes);
-    };
-    assets.associate = function(models) {
-      models.assets.hasMany(models.asset_to_notes);
-    };
-   /*   */ 
-   
-   return assets;
+     models.assets.hasOne(models.categories);
+   };
+  categories.associate = function(models) {
+     models.categories.hasMany(models.attributes);
+   }; 
+   assets.associate = function(models) {
+     models.assets.hasMany(models.asset_to_notes);
+   };
+  */
+
+  return assets;
 };

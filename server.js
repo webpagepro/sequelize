@@ -31,14 +31,14 @@ apiAttributes(app, db);
 apiAssetToAttributes(app, db);
 apiCategoryToAttributes(app, db);
 apiAssetToNotes(app, db);
-/*
-db.assets.belongsTo(db.categories);
-db.attributes.belongsTo(db.categories);
-db.assets.hasMany(db.attributes);
-db.assets.hasMany(db.asset_to_notes);
-db.attribues.belongsTo(db.asset_to_attributes);
-db.categories.belongsTo(db.category_to_attributes);
-*/
+
+//db.assets.belongsTo(db.categories, {through: db.asset_to_attributes, unique: false });
+//db.categories.belongsTo(db.assets);
+//db.asset_to_notes.associates(db.assets);
+//db.attributes.belongsTo(db.asset_to_attributes);
+//db.attributes.belongsTo(db.asset_to_attributes. );
+//db.categories.belongsTo(db.category_to_attributes);
+
 /*
 db.sequelize.sync().then(() => {
   // populate categories table with dummy data
@@ -55,6 +55,6 @@ db.sequelize.sync().then(() => {
       category_id: faker.lorem.paragraph()
     }))
   );
-  */
+*/
   app.listen(8080, () => console.log("App listening on port 8080!"));
 //});

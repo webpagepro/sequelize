@@ -16,16 +16,19 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.DATE,
 			allowNull: true,
 			defaultValue: sequelize.literal('NOW()')
+
 		  },
 	  
 		  updatedAt: {
 			type: DataTypes.STRING,
 			allowNull: true,
 			defaultValue: sequelize.literal('NOW()')
-		  }
+			}
+			
 	}, {
 		timestamps: true,
-		tableName: 'categories'
+		tableName: 'categories',
+		freezeTableName: true
   });
   
   return categories;

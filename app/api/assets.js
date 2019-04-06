@@ -1,25 +1,39 @@
 module.exports = (app, db) => {
  /*  GET ASSET ATTRIBUTES  */
- app.get("/assets", (req, res) => {
- 
- db.assets.findAll({
+   app.get("/assets", (req, res) => {
 
-   order: [['asset_id']]
+        db.assets.findAll({
+       
+          order: [['asset_id']]
+       
+        })
+            .then(result => {
+                res.json(result)
+            })
+       })
 
- })
-     .then(result => {
+/* 
+    .then(result => {
          res.json(result)
      })
     })
-/* 
+   
 db.sequelize.query(`SELECT a.asset_id, a.qrcode, ata.attribute_value, attr.attribute_name, atn.notes FROM assets a JOIN asset_to_attributes ata ON a.asset_id = ata.asset_id JOIN attributes attr ON attr.attribute_id = ata.attribute_id JOIN asset_to_notes atn ON atn.asset_id = a.asset_id
 ORDER BY a.asset_id`, {type: db.sequelize.QueryTypes.SELECT})
 
 .then(result => {
   res.json(result)
 })})
-  */ 
+  
+ where: [{
+    asset_id: ['asset_to_attributes']}]
  
+}).then(
+    results => {
+        res.json(results)
+    })
+   })
+*/ 
  
   /*  GET ASSET ATTRIBUTES  */
          app.get( "/assets/attributes", (req, res) => {
@@ -35,7 +49,7 @@ ORDER BY a.asset_id`, {type: db.sequelize.QueryTypes.SELECT})
     // ASSET & ATTRIBUTES BY ID
     app.get("/assets/:id", (req, res) => {
         
-            db.asset_to_attributes.findAll({
+            db.assets.findOne({
 
 
                 where:
@@ -70,7 +84,7 @@ ORDER BY a.asset_id`, {type: db.sequelize.QueryTypes.SELECT})
 
     //GET  ASSET ATTTRIBUTES BY CATEGORY ID *WORKS
     app.get("/assets/category/:id", (req, res) => {
-        db.asset_to_attributes.findAll({
+        db.assets.findAll({
             attribute_values: [
                 'attribute_values'
             ],

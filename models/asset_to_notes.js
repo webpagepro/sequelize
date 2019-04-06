@@ -39,11 +39,10 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	},
 
-
-
 		{
 			timestamps: true,
-			tableName: 'asset_to_notes'
+			tableName: 'asset_to_notes',
+			freezeTableName: true
 		});
 	return asset_to_notes;
 };

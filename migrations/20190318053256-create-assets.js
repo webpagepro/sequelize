@@ -15,12 +15,19 @@ module.exports = {
       qrcode: {
         type: Sequelize.STRING
       },
+
+      notes: {
+        type: Sequelize.STRING
+      },
+
+
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE,
         timestamps: true,
         defaultValue: Sequelize.DATE
       },
+
       updatedAt: {
         allowNull: true,
         type: Sequelize.DATE,

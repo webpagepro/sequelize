@@ -27,9 +27,11 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: true,
 			defaultValue: sequelize.literal('NOW()')
 		  }
+
 	}, {
 		timestamps: true,
-		tableName: 'category_to_attributes'
+		tableName: 'category_to_attributes',  
+		freezeTableName: true
 	});
 	return category_to_attributes;
 };

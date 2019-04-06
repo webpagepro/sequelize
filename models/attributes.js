@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false
 		},
 
-		createdAt: {
+		created_at: {
 			type: DataTypes.DATE,
 			allowNull: true,
 			defaultValue: sequelize.literal('NOW()')
@@ -23,11 +23,19 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: true,
 			defaultValue: sequelize.literal('NOW()')
+		},
+
+		deletedAt: {
+			type: DataTypes.STRING,
+			allowNull: true,
+			defaultValue: sequelize.literal('NOW()')
 		}
 	},
 		{
 			timestamps: true,
-			tableName: 'attributes'
+			tableName: 'attributes',  
+			freezeTableName: true,
+	
 
 		});
 
