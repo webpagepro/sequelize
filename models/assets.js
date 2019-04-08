@@ -5,8 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     asset_id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+     
     },
+
     category_id: {
       type: DataTypes.INTEGER(11),
       allowNull: false
@@ -42,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
       freezeTableName: true
     });
 
-
+//assets.removeAttribute('id');
 
   /*  
   assets.associate = function(models) {

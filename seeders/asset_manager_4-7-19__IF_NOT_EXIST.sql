@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2019 at 06:23 AM
+-- Generation Time: Apr 08, 2019 at 06:02 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -28,63 +28,64 @@ SET time_zone = "+00:00";
 -- Table structure for table `assets`
 --
 
-CREATE TABLE `assets` (
+CREATE TABLE IF NOT EXISTS `assets` (
   `asset_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL
+  `category_id` int(11) DEFAULT NULL,
+  `qrcode` varchar(255) DEFAULT NULL,
+  `notes` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`asset_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `assets`
 --
 
-INSERT INTO `assets` (`asset_id`, `category_id`, `createdAt`, `updatedAt`) VALUES
-(10000, 3, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10001, 3, '2019-03-18 11:58:15', '2019-03-24 04:36:31'),
-(10002, 3, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10003, 3, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10004, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10005, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10006, 3, '2019-03-18 11:58:15', '2019-03-24 04:22:50'),
-(10008, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10009, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(10010, 1, '2019-03-18 11:58:15', '2019-03-18 11:58:15'),
-(20010, 1, '2019-03-22 19:07:20', '2019-03-22 19:07:20'),
-(30000, 1, '2019-03-22 06:32:08', '2019-03-22 06:32:08');
+INSERT INTO `assets` (`asset_id`, `category_id`, `qrcode`, `notes`, `createdAt`, `updatedAt`) VALUES
+(10000, 3, 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2F10000&qzone=1&margin=0&size=400x400&ecc=L', 'Audio updated HDD Tested Windows updated', NULL, '2019-04-08 04:51:35'),
+(10001, 3, 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2F10001&qzone=1&margin=0&size=400x400&ecc=L', ' HDD Wiped', NULL, NULL),
+(10002, 3, 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2F10002&qzone=1&margin=0&size=400x400&ecc=L', 'Audio updated', NULL, NULL),
+(10003, 3, 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2F10003&qzone=1&margin=0&size=400x400&ecc=L', ' HDD Wiped', NULL, NULL),
+(10004, 1, 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2F10004&qzone=1&margin=0&size=400x400&ecc=L', 'Audio updated', NULL, NULL),
+(10005, 1, 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2F10005&qzone=1&margin=0&size=400x400&ecc=L', 'Audio updated', NULL, NULL),
+(10006, 1, 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2F10006&qzone=1&margin=0&size=400x400&ecc=L', 'Audio updated', NULL, NULL),
+(10008, 1, 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2F10008&qzone=1&margin=0&size=400x400&ecc=L', 'Audio updated', NULL, NULL),
+(10010, 1, 'http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhost%3A3000%2Fassets%2F10010&qzone=1&margin=0&size=400x400&ecc=Lhttp://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=http%3A%2F%2Flocalhos', 'Audio updated', NULL, NULL),
+(57708, 1, 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=57708', NULL, '2019-04-06 22:14:44', '2019-04-08 05:31:47'),
+(98765, 2, 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=98765', 'aaaaaaaaaaaaaaaaaaaa', '2019-04-07 03:57:31', '2019-04-08 05:19:58'),
+(98766, 1, NULL, NULL, '2019-04-08 05:53:11', '2019-04-08 05:53:11');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `asset_to_attributes`
+-- Table structure for table `asset_toAttributes`
 --
 
-CREATE TABLE `asset_to_attributes` (
-  `asset_to_attributes_id` int(11) NOT NULL,
-  `asset_id` int(11) NOT NULL,
-  `attribute_id` int(11) NOT NULL,
-  `attribute_value` text NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE IF NOT EXISTS `asset_toAttributes` (
+  `asset_toAttributes_id` int(11) NOT NULL,
+  `asset_id` int(11) DEFAULT NULL,
+  `attribute_id` int(11) DEFAULT NULL,
+  `attribute_value` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `asset_to_attributes`
+-- Dumping data for table `asset_toAttributes`
 --
 
-INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attribute_id`, `attribute_value`, `createdAt`, `updatedAt`) VALUES
+INSERT INTO `asset_toAttributes` (`asset_toAttributes_id`, `asset_id`, `attribute_id`, `attribute_value`, `createdAt`, `updatedAt`) VALUES
 (11, 10017, 1, 'STI-CSR-10017', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (12, 10017, 2, 'Chelsie', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (13, 10017, 3, 'STI', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (14, 10017, 4, 'CSR', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (15, 10017, 5, 'A4', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (31, 10004, 1, 'STI-CSR-10004', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(32, 10004, 2, 'Jesus', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(32, 10004, 2, 'Jesus', '2019-03-18 12:35:30', '2019-03-24 11:57:27'),
 (33, 10004, 3, 'STI', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (34, 10004, 4, 'CSR', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (35, 10004, 5, 'B3', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(43, 10004, 12, '----------\r\n', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(44, 10004, 13, '----------\r\n', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (98, 10119, 1, 'STI-IT-10119', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (99, 10119, 2, 'Not in use', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (100, 10119, 3, 'STI', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
@@ -95,11 +96,11 @@ INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attrib
 (105, 10119, 8, '2GB RAM', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (106, 10119, 9, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (107, 10119, 10, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(108, 10119, 11, '3/24/2018', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(108, 10119, 11, '3/24/2016', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (186, 10004, 6, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (187, 10004, 7, 'test', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (188, 10004, 8, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(189, 10004, 7, 'test', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(189, 10004, 9, 'test', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (190, 10004, 10, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (191, 10004, 11, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (411, 10017, 6, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
@@ -119,24 +120,24 @@ INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attrib
 (1156, 10075, 1, 'Seagate', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1157, 10075, 7, '320 GB', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1158, 10075, 10, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1159, 10075, 11, '4/13/2018', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(1159, 10075, 11, '4/13/2016', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1160, 10075, 12, 'Barracuda 7200.10 ', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1161, 10075, 13, '9QF9AN32', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1209, 10034, 1, 'Western Digital', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1210, 10034, 7, '1 TB', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1211, 10034, 10, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1212, 10034, 11, '4/13/2018', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(1212, 10034, 11, '4/13/2016', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1213, 10034, 12, 'WD10EALX', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1214, 10034, 13, 'WCATR8649400', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1228, 88338, 13, '88338 - SN', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1272, 20000, 12, '20000 - Model', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1273, 20000, 13, '20000 - SN', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1285, 10002, 1, '10002 - Name', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1286, 10002, 7, '10002 - Storage', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1287, 10002, 10, '10002 - HDD', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1288, 10002, 11, '10002 - Date Tested', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1289, 10002, 12, '10002 - Model', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1290, 10002, 13, '10002 - SN', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(1285, 10002, 1, 'Storage - 10002 - Storage', '2019-03-18 12:35:30', '2019-03-24 06:36:11'),
+(1286, 10002, 7, 'Gorstage Storage', '2019-03-18 12:35:30', '2019-03-24 06:44:11'),
+(1287, 10002, 10, 'Storage - 10002 - Storage', '2019-03-18 12:35:30', '2019-03-24 06:36:11'),
+(1288, 10002, 11, 'Storage - 10002 - Storage', '2019-03-18 12:35:30', '2019-03-24 06:36:11'),
+(1289, 10002, 12, 'Storage - 10002 - Storage', '2019-03-18 12:35:30', '2019-03-24 06:36:11'),
+(1290, 10002, 13, 'Storage - 10002 - Storage', '2019-03-18 12:35:30', '2019-03-24 06:36:11'),
 (1317, 10012, 1, 'STI-CSR-10012', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1318, 10012, 2, 'Jermicka', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1319, 10012, 3, 'STI', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
@@ -158,7 +159,7 @@ INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attrib
 (1335, 10010, 8, 'Test', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1336, 10010, 9, 'Test', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1337, 10010, 10, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1338, 10010, 11, '3/21/2018', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(1338, 10010, 11, '3/21/2016', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1339, 10029, 1, 'STI-CSR-10029', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1340, 10029, 2, 'None', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1341, 10029, 3, 'STI', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
@@ -169,7 +170,7 @@ INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attrib
 (1346, 10029, 8, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1347, 10029, 9, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1348, 10029, 10, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1349, 10029, 11, '10/26/2018', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(1349, 10029, 11, '10/26/2016', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1350, 10024, 1, 'STI-CSR-10024', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1351, 10024, 2, 'Marco', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1352, 10024, 3, 'STI', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
@@ -191,7 +192,7 @@ INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attrib
 (1368, 10110, 8, '6GB RAM', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1369, 10110, 9, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1370, 10110, 10, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1371, 10110, 11, '3/21/2018', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(1371, 10110, 11, '3/21/2016', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1372, 10127, 1, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1373, 10127, 2, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1374, 10127, 3, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
@@ -202,7 +203,7 @@ INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attrib
 (1379, 10127, 8, '2GB RAM', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1380, 10127, 9, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1381, 10127, 10, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1382, 10127, 11, '5/11/2018', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(1382, 10127, 11, '5/11/2016', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1383, 10124, 1, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1384, 10124, 2, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1385, 10124, 3, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
@@ -213,7 +214,7 @@ INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attrib
 (1390, 10124, 8, '3GB RAM', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1391, 10124, 9, 'PASS ', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1392, 10124, 10, 'PASS/PRE-FAILURE', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1393, 10124, 11, '5/12/2018', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(1393, 10124, 11, '5/12/2016', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1394, 10132, 1, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1395, 10132, 2, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1396, 10132, 3, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
@@ -224,7 +225,7 @@ INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attrib
 (1401, 10132, 8, '4GB RAM', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1402, 10132, 9, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1403, 10132, 10, 'PASS', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
-(1404, 10132, 11, '3/24/2018', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
+(1404, 10132, 11, '3/24/2016', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1416, 10107, 1, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1417, 10107, 2, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
 (1418, 10107, 3, '----------', '2019-03-18 12:35:30', '2019-03-18 12:35:30'),
@@ -394,72 +395,77 @@ INSERT INTO `asset_to_attributes` (`asset_to_attributes_id`, `asset_id`, `attrib
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `asset_to_attributes`
+--
+
+CREATE TABLE IF NOT EXISTS `asset_to_attributes` (
+  `asset_to_attributes_id` int(11) NOT NULL AUTO_INCREMENT,
+  `asset_id` int(11) DEFAULT NULL,
+  `attribute_id` int(11) DEFAULT NULL,
+  `attribute_value` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`asset_to_attributes_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `asset_to_notes`
 --
 
-CREATE TABLE `asset_to_notes` (
-  `asset_to_note_id` int(11) NOT NULL,
-  `asset_id` int(11) NOT NULL,
-  `note_id` int(10) NOT NULL,
-  `notes` text NOT NULL,
-  `notes_entry_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `asset_to_notes` (
+  `asset_to_note_id` int(11) NOT NULL AUTO_INCREMENT,
+  `asset_id` int(11) DEFAULT NULL,
+  `note_id` int(11) DEFAULT NULL,
+  `notes` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`asset_to_note_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `asset_to_notes`
 --
 
-INSERT INTO `asset_to_notes` (`asset_to_note_id`, `asset_id`, `note_id`, `notes`, `notes_entry_date`, `createdAt`, `updatedAt`) VALUES
-(6, 10119, 1, 'HDD Wiped', '2019-03-21 15:00:02', '2018-04-01 21:25:24', '2019-03-18 12:41:41'),
-(17, 10004, 1, '----------', '2019-03-21 15:00:02', '2018-04-05 22:39:54', '2019-03-18 12:41:41'),
-(36, 10017, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-04-13 15:26:09', '2019-03-18 12:41:41'),
-(65, 10005, 1, 'TEST TEST TEST ', '2019-03-21 15:00:02', '2018-04-19 19:39:47', '2019-03-18 12:41:41'),
-(70, 10039, 1, '----------', '2019-03-21 15:00:02', '2018-04-29 19:54:50', '2019-03-18 12:41:41'),
-(73, 10040, 1, '----------', '2019-03-21 15:00:02', '2018-04-29 20:25:56', '2019-03-18 12:41:41'),
-(74, 10041, 1, '----------', '2019-03-21 15:00:02', '2018-04-29 20:39:36', '2019-03-18 12:41:41'),
-(95, 11001, 1, 'Test Notes', '2019-03-21 15:00:02', '2018-05-04 18:10:16', '2019-03-18 12:41:41'),
-(97, 10075, 1, '----------', '2019-03-21 15:00:02', '2018-05-04 22:18:13', '2019-03-18 12:41:41'),
-(110, 10034, 1, '1034 - NOTES', '2019-03-21 15:00:02', '2018-05-25 21:54:38', '2019-03-18 12:41:41'),
-(122, 10002, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-06-20 14:29:43', '2019-03-18 12:41:41'),
-(126, 10012, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-06-30 20:23:06', '2019-03-18 12:41:41'),
-(127, 10010, 1, 'Audio updated, moved to ext. 7904', '2019-03-21 15:00:02', '2018-06-30 20:33:10', '2019-03-18 12:41:41'),
-(128, 10029, 1, 'Installed: iSymphony, Silverlight 10/24/2018', '2019-03-21 15:00:02', '2018-06-30 20:54:02', '2019-03-18 12:41:41'),
-(129, 10024, 1, '----------', '2019-03-21 15:00:02', '2018-06-30 20:57:21', '2019-03-18 12:41:41'),
-(130, 10110, 1, 'HD Wiped', '2019-03-21 15:00:02', '2018-07-28 17:26:14', '2019-03-18 12:41:41'),
-(131, 10127, 1, 'HD Needs review (NOT WIPED) - Server files - Mysql User Alimovz', '2019-03-21 15:00:02', '2018-07-28 17:59:18', '2019-03-18 12:41:41'),
-(132, 10124, 1, 'HD Wiped', '2019-03-21 15:00:02', '2018-07-28 18:01:53', '2019-03-18 12:41:41'),
-(133, 10132, 1, 'HD Wiped', '2019-03-21 15:00:02', '2018-07-28 18:15:13', '2019-03-18 12:41:41'),
-(135, 10107, 1, '----------', '2019-03-21 15:00:02', '2018-07-28 18:37:47', '2019-03-18 12:41:41'),
-(140, 10083, 1, 'Just a test', '2019-03-21 15:00:02', '2018-09-30 19:22:12', '2019-03-18 12:41:41'),
-(141, 10083, 1, 'Just a test', '2019-03-21 15:00:02', '2018-09-30 19:22:12', '2019-03-18 12:41:41'),
-(142, 10014, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 17:04:07', '2019-03-18 12:41:41'),
-(143, 10079, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 17:04:54', '2019-03-18 12:41:41'),
-(144, 10019, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 17:08:36', '2019-03-18 12:41:41'),
-(145, 10020, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 17:10:14', '2019-03-18 12:41:41'),
-(146, 10101, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:23:34', '2019-03-18 12:41:41'),
-(147, 10006, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:24:53', '2019-03-18 12:41:41'),
-(148, 10021, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:29:13', '2019-03-18 12:41:41'),
-(149, 10008, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:37:51', '2019-03-18 12:41:41'),
-(150, 10009, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:39:25', '2019-03-18 12:41:41'),
-(151, 10027, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:47:27', '2019-03-18 12:41:41'),
-(152, 10026, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-04 13:18:10', '2019-03-18 12:41:41'),
-(153, 10076, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-04 13:21:33', '2019-03-18 12:41:41'),
-(154, 10033, 1, 'Gray box, updated silverlight', '2019-03-21 15:00:02', '2018-10-25 15:02:55', '2019-03-18 12:41:41'),
-(155, 10033, 1, 'Gray box, updated silverlight', '2019-03-21 15:00:02', '2018-10-25 15:02:55', '2019-03-18 12:41:41'),
-(156, 10018, 1, 'Unused switched with Jim', '2019-03-21 15:00:02', '2018-10-25 15:17:18', '2019-03-18 12:41:41'),
-(182, 10004, 1, '----------', '2019-03-21 15:00:02', '2018-02-19 01:49:50', '2019-03-18 12:41:41'),
-(183, 10004, 1, '----------', '2019-03-21 15:00:02', '2018-02-19 01:51:14', '2019-03-18 12:41:41'),
-(184, 10004, 1, '----------', '2019-03-21 15:00:02', '2018-02-19 01:52:12', '2019-03-18 12:41:41'),
-(185, 10004, 1, '----------', '2019-03-21 15:00:02', '2018-02-19 01:53:01', '2019-03-18 12:41:41'),
-(186, 10004, 1, '----------', '2019-03-21 15:00:02', '2018-02-19 01:53:22', '2019-03-18 12:41:41'),
-(187, 10075, 1, '----------', '2019-03-21 15:00:02', '2018-02-19 08:49:47', '2019-03-18 12:41:41'),
-(191, 10074, 1, '----------', '2019-03-21 15:00:02', '2018-02-19 20:26:57', '2019-03-18 12:41:41'),
-(198, 10074, 1, '----------', '2019-03-21 15:00:02', '2018-02-21 14:41:58', '2019-03-18 12:41:41'),
-(199, 10074, 1, '----------', '2019-03-21 15:00:02', '2018-02-21 14:51:44', '2019-03-18 12:41:41'),
-(200, 10074, 1, '----------', '2019-03-21 15:00:02', '2018-02-21 14:55:48', '2019-03-18 12:41:41'),
-(203, 10074, 1, '----------', '2019-03-21 15:00:02', '2018-03-06 15:47:32', '2019-03-18 12:41:41');
+INSERT INTO `asset_to_notes` (`asset_to_note_id`, `asset_id`, `note_id`, `notes`, `createdAt`, `updatedAt`) VALUES
+(6, 10119, 1, 'HDD Wiped', '2019-03-21 15:00:02', '2018-04-01 21:25:24'),
+(17, 10004, 1, '----------', '2019-03-21 15:00:02', '2018-04-05 22:39:54'),
+(36, 10017, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-04-13 15:26:09'),
+(65, 10005, 1, 'TEST TEST TEST ', '2019-03-21 15:00:02', '2018-04-19 19:39:47'),
+(70, 10039, 1, '----------', '2019-03-21 15:00:02', '2018-04-29 19:54:50'),
+(73, 10040, 1, '----------', '2019-03-21 15:00:02', '2018-04-29 20:25:56'),
+(74, 10041, 1, '----------', '2019-03-21 15:00:02', '2018-04-29 20:39:36'),
+(95, 11001, 1, 'Test Notes', '2019-03-21 15:00:02', '2018-05-04 18:10:16'),
+(97, 10075, 1, '----------', '2019-03-21 15:00:02', '2018-05-04 22:18:13'),
+(110, 10034, 1, '1034 - NOTES', '2019-03-21 15:00:02', '2018-05-25 21:54:38'),
+(122, 10002, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-06-20 14:29:43'),
+(126, 10012, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-06-30 20:23:06'),
+(127, 10010, 1, 'Audio updated, moved to ext. 7904', '2019-03-21 15:00:02', '2018-06-30 20:33:10'),
+(128, 10029, 1, 'Installed: iSymphony, Silverlight 10/24/2016', '2019-03-21 15:00:02', '2018-06-30 20:54:02'),
+(129, 10024, 1, '----------', '2019-03-21 15:00:02', '2018-06-30 20:57:21'),
+(130, 10110, 1, 'HD Wiped', '2019-03-21 15:00:02', '2018-07-28 17:26:14'),
+(131, 10127, 1, 'HD Needs review (NOT WIPED) - Server files - Mysql User Alimovz', '2019-03-21 15:00:02', '2018-07-28 17:59:18'),
+(132, 10124, 1, 'HD Wiped', '2019-03-21 15:00:02', '2018-07-28 18:01:53'),
+(133, 10132, 1, 'HD Wiped', '2019-03-21 15:00:02', '2018-07-28 18:15:13'),
+(135, 10107, 1, '----------', '2019-03-21 15:00:02', '2018-07-28 18:37:47'),
+(140, 10083, 1, 'Just a test', '2019-03-21 15:00:02', '2018-09-30 19:22:12'),
+(141, 10083, 1, 'Just a test', '2019-03-21 15:00:02', '2018-09-30 19:22:12'),
+(142, 10014, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 17:04:07'),
+(143, 10079, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 17:04:54'),
+(144, 10019, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 17:08:36'),
+(145, 10020, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 17:10:14'),
+(146, 10101, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:23:34'),
+(147, 10006, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:24:53'),
+(148, 10021, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:29:13'),
+(149, 10008, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:37:51'),
+(150, 10009, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:39:25'),
+(151, 10027, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-03 22:47:27'),
+(152, 10026, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-04 13:18:10'),
+(153, 10076, 1, 'Audio updated', '2019-03-21 15:00:02', '2018-10-04 13:21:33'),
+(154, 10033, 1, 'Gray box, updated silverlight', '2019-03-21 15:00:02', '2018-10-25 15:02:55'),
+(155, 10033, 1, 'Gray box, updated silverlight', '2019-03-21 15:00:02', '2018-10-25 15:02:55'),
+(156, 10018, 1, 'Unused switched with Jim', '2019-03-21 15:00:02', '2018-10-25 15:17:18');
 
 -- --------------------------------------------------------
 
@@ -467,12 +473,13 @@ INSERT INTO `asset_to_notes` (`asset_to_note_id`, `asset_id`, `note_id`, `notes`
 -- Table structure for table `attributes`
 --
 
-CREATE TABLE `attributes` (
-  `attribute_id` int(11) NOT NULL,
-  `attribute_name` varchar(256) NOT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `attributes` (
+  `attribute_id` int(11) NOT NULL AUTO_INCREMENT,
+  `attribute_name` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`attribute_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `attributes`
@@ -499,12 +506,13 @@ INSERT INTO `attributes` (`attribute_id`, `attribute_name`, `createdAt`, `update
 -- Table structure for table `categories`
 --
 
-CREATE TABLE `categories` (
-  `category_id` int(11) NOT NULL,
-  `category_name` varchar(256) NOT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `categories`
@@ -520,22 +528,22 @@ INSERT INTO `categories` (`category_id`, `category_name`, `createdAt`, `updatedA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_to_attributes`
+-- Table structure for table `category_toAttributes`
 --
 
-CREATE TABLE `category_to_attributes` (
-  `category_to_attributes_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `category_toAttributes` (
+  `category_toAttributes_id` int(11) NOT NULL,
   `attribute_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
-  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` datetime NOT NULL
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category_to_attributes`
+-- Dumping data for table `category_toAttributes`
 --
 
-INSERT INTO `category_to_attributes` (`category_to_attributes_id`, `attribute_id`, `category_id`, `createdAt`, `updatedAt`) VALUES
+INSERT INTO `category_toAttributes` (`category_toAttributes_id`, `attribute_id`, `category_id`, `createdAt`, `updatedAt`) VALUES
 (1, 1, 1, '2019-03-18 12:45:24', '2019-03-18 12:45:24'),
 (2, 2, 1, '2019-03-18 12:45:24', '2019-03-18 12:45:24'),
 (3, 3, 1, '2019-03-18 12:45:24', '2019-03-18 12:45:24'),
@@ -566,105 +574,17 @@ INSERT INTO `category_to_attributes` (`category_to_attributes_id`, `attribute_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SequelizeMeta`
+-- Table structure for table `category_to_attributes`
 --
 
-CREATE TABLE `SequelizeMeta` (
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `SequelizeMeta`
---
-
-INSERT INTO `SequelizeMeta` (`name`) VALUES
-('20190318053256-create-assets.js'),
-('20190318053541-create-categories.js'),
-('20190318054053-create-attributes.js'),
-('20190318054655-create-asset-to-notes.js'),
-('20190318054750-create-asset-to-attributes.js'),
-('20190318054827-create-category-to-attributes.js');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `assets`
---
-ALTER TABLE `assets`
-  ADD PRIMARY KEY (`asset_id`);
-
---
--- Indexes for table `asset_to_attributes`
---
-ALTER TABLE `asset_to_attributes`
-  ADD PRIMARY KEY (`asset_to_attributes_id`);
-
---
--- Indexes for table `asset_to_notes`
---
-ALTER TABLE `asset_to_notes`
-  ADD PRIMARY KEY (`asset_to_note_id`);
-
---
--- Indexes for table `attributes`
---
-ALTER TABLE `attributes`
-  ADD PRIMARY KEY (`attribute_id`);
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Indexes for table `category_to_attributes`
---
-ALTER TABLE `category_to_attributes`
-  ADD PRIMARY KEY (`category_to_attributes_id`);
-
---
--- Indexes for table `SequelizeMeta`
---
-ALTER TABLE `SequelizeMeta`
-  ADD PRIMARY KEY (`name`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `asset_to_attributes`
---
-ALTER TABLE `asset_to_attributes`
-  MODIFY `asset_to_attributes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1589;
-
---
--- AUTO_INCREMENT for table `asset_to_notes`
---
-ALTER TABLE `asset_to_notes`
-  MODIFY `asset_to_note_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
-
---
--- AUTO_INCREMENT for table `attributes`
---
-ALTER TABLE `attributes`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `category_to_attributes`
---
-ALTER TABLE `category_to_attributes`
-  MODIFY `category_to_attributes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+CREATE TABLE IF NOT EXISTS `category_to_attributes` (
+  `category_to_attributes_id` int(11) NOT NULL AUTO_INCREMENT,
+  `attribute_id` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`category_to_attributes_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

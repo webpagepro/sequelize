@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
 	}, {
 		timestamps: true,
 		tableName: 'category_to_attributes',  
-		freezeTableName: true
+		freezeTableName: true,
 	});
 	return category_to_attributes;
 };

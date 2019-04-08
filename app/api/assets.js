@@ -62,7 +62,7 @@ module.exports = (app, db) => {
 
 
     //GET ASSETS - ATTTRIBUTES & NOTES BY CATEGORY ID *WORKS
-    app.get("/assets/attributes/category/:category_id", (req, res) => {
+ /*    app.get("/assets/attributes/category/:category_id", (req, res) => {
         db.asset_to_attributes.sequelize.query(`SELECT a.asset_id, a.category_id, ata.attribute_id, attr.attribute_name, ata.attribute_value, atn.notes
             FROM assets a
             JOIN category_to_attributes cta
@@ -75,12 +75,12 @@ module.exports = (app, db) => {
             ON atn.asset_id = ata.asset_id
            
             WHERE a.category_id =  ${req.params.category_id}
-            GROUP BY a.asset_id, ata.attribute_id, attr.attribute_name, ata.attribute_value, a.category_id, atn.notes`, { type: sequelize.QueryTypes.SELECT })
+            ORDER BY a.asset_id, ata.attribute_id, attr.attribute_name, ata.attribute_value, a.category_id, atn.notes`, { type: db.asset_to_attributes.sequelize.QueryTypes.SELECT })
             .then(result =>
                 res.json(result))
-        // });
+        });
     })
-    /* */
+    */
 
     //GET  ASSET ATTTRIBUTES BY CATEGORY ID *WORKS
     app.get("/assets/category/:id", (req, res) => {
@@ -138,19 +138,19 @@ module.exports = (app, db) => {
 */
 
 
-     // EDIT ASSET CATEGORY
-     app.put("/assets/edit/:id", (req, res) =>
-     db.assets.update({
-         asset_id: req.params.id,
-         notes: req.body.notes,
-         qrcode: req.body.qrcode
-     },
-         {
-             where: {
-                 asset_id: req.params.id
-             }
-         }).then((result) => res.json(result))
- );
+    // EDIT ASSET 
+    app.put("/assets/edit/:id", (req, res) =>
+        db.assets.update({
+            asset_id: req.params.id,
+            notes: req.body.notes,
+            qrcode: req.body.qrcode
+        },
+            {
+                where: {
+                    asset_id: req.params.id
+                }
+            }).then((result) => res.json(result))
+    );
 
     /*
     
@@ -183,5 +183,21 @@ module.exports = (app, db) => {
     );
 
 
+    app.post("/lookup", (req, res) => {
+        db.sequelize.query(`INSERT INTO assets(asset_id) VALUES((SELECT MAX(asset_id) + 1 FROM assets a))`,
+        { type: db.assets.sequelize.QueryTypes.INSERT })
+       
+
+            .then(result => {
+                res.json(result)
+            })
+    })
+
+    app.get("/lookup", (req, res) => {
+        db.sequelize.query(`SELECT MAX(asset_id) AS max_id FROM assets`,  { type: db.assets.sequelize.QueryTypes.SELECT })
+        .then(result => {
+            res.json(result)
+        })
+    })
 
 }
