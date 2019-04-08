@@ -142,7 +142,8 @@ module.exports = (app, db) => {
      app.put("/assets/edit/:id", (req, res) =>
      db.assets.update({
          asset_id: req.params.id,
-         notes: req.body.notes
+         notes: req.body.notes,
+         qrcode: req.body.qrcode
      },
          {
              where: {
