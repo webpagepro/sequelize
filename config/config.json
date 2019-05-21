@@ -3,7 +3,7 @@
 {
   "development": {
     "username": "asset",
-    "password": "manager",
+    "password": null,
     "database": "asset_manager",
     "host": "127.0.0.1",
     "dialect": "mysql"
