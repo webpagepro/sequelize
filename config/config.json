@@ -4,22 +4,22 @@
   "development": {
     "username": "asset",
     "password": null,
-    "database": "asset_manager",
-    "host": "127.0.0.1",
+    "database": "",
+    "host": "",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "database": "",
+    "host": "",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "database": "",
+    "host": "",
     "dialect": "mysql"
   }
 }
