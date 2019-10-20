@@ -2,21 +2,21 @@
 
 {
   "development": {
-    "username": "asset",
+    "username": "",
     "password": null,
     "database": "",
     "host": "",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
+    "username": "",
     "password": null,
     "database": "",
     "host": "",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
+    "username": "",
     "password": null,
     "database": "",
     "host": "",
