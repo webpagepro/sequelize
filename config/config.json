@@ -3,21 +3,21 @@
 {
   "development": {
     "username": "",
-    "password": null,
+    "password": "",
     "database": "",
     "host": "",
     "dialect": "mysql"
   },
   "test": {
     "username": "",
-    "password": null,
+    "password": "",
     "database": "",
     "host": "",
     "dialect": "mysql"
   },
   "production": {
     "username": "",
-    "password": null,
+    "password": "",
     "database": "",
     "host": "",
     "dialect": "mysql"
